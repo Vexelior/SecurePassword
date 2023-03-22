@@ -1,4 +1,4 @@
-# SecurePassword
+# Secure Password Generator
 
 A simple password generator made with HTML, CSS and JavaScript. 
 
