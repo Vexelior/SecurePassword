@@ -8,6 +8,8 @@ var characters = {
     numbers: '0123456789',
     symbols: '!@#$%^&*()_+~`|}{[]\:;?><,./-=',
 };
+const successBanner = document.querySelector('.alert-success');
+const errorBanner = document.querySelector('.alert-danger');
 
 function GeneratePassword() {
     // Check if the uppercase and special characters boxes are checked
@@ -95,13 +97,37 @@ $(document).ready(function() {
     // When the user clicks on the password box, add the text to the clipboard
     $(passwordBox).on('click', function() {
         if (passwordBox.val() == '' || passwordBox.val() == null) {
+            // Remove the success banner from the DOM
+            $(successBanner).remove();
+            // Add the error banner to the DOM
+            errorBanner.classList.add('show');
+            // Hide the error banner after 3 seconds
+            setTimeout(function() {
+                errorBanner.classList.remove('show');
+            }, 3000);
+            // Add the success banner back to the DOM
+            $(successBanner).appendTo('.banners');
             return;
         } else {
             passwordBox.select();
             document.execCommand('copy');
-            alert('Password copied to clipboard');
+            // Remove the error banner from the DOM
+            $(errorBanner).remove();
+            // Add the success banner to the DOM
+            successBanner.classList.add('show');
+            // Hide the success banner after 3 seconds
+            setTimeout(function() {
+                successBanner.classList.remove('show');
+            } , 3000);
+            // Add the error banner back to the DOM
+            $(errorBanner).appendTo('.banners');
         }
-    });   
+    });
+    
+    // Do not allow the user to type in the password box
+    $(passwordBox).on('keydown', function(e) {
+        e.preventDefault();
+    });
 });
 
 $('#generate').on('click', function() {

@@ -34,6 +34,22 @@
 </head>
 
 <body>
+    <div class="banners">
+        <div class="alert alert-success alert-dismissible fade" role="alert" id="success-banner">
+            <strong>Success!</strong> Your password has been copied to the clipboard.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" id="close-banner">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="alert alert-danger alert-dismissible fade" role="alert" id="not-success-banner">
+            <strong>Oops!</strong> There was no password to copy. Please generate a password first.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" id="close-banner">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+
     <div class="container mt-5">
         <div class="app-container" id="app-container">
             <h2 class="col-12 text-center mt-2">
@@ -41,7 +57,6 @@
                 Secure Password Generator
                 <i class="fa fa-lock"></i>
             </h2>
-            <!-- Password Generator Input -->
             <div class="d-flex justify-content-center">
                 <div class="input-group">
                     <input type="text" class="form-control" id="password" placeholder="Secure Password..."
@@ -49,9 +64,7 @@
                         data-placement="bottom" title="Click to Copy">
                 </div>
             </div>
-            <!-- Password Generator Options -->
             <div class="d-flex justify-content-center">
-                <!-- Create 2 checkboxes for password options -->
                 <div class="form-group form-check form-check-inline" id="checkboxContainer">
                     <label class="form-check-label" for="uppercase">Uppercase</label>
                     <input class="form-check-input" type="checkbox" id="uppercase">
@@ -60,24 +73,20 @@
                     <label class="form-check-label" for="special">Special Characters</label>
                     <input class="form-check-input" type="checkbox" id="special">
                 </div>
-                <!-- Create a slider for password length -->
                 <div class="form-group" id="lengthContainer">
                     <label for="length">Password Length</label>
                     <input type="range" class="form-control-range" id="length" min="8" max="36" value="16">
-                    <!-- Display the value of the slider -->
                     <div class="d-flex justify-content-between">
                         <span>8</span>
                         <span>21</span>
                         <span>36</span>
                     </div>
-                    <!-- Display the value of the slider -->
                     <div class="d-flex justify-content-center mt-2">
                         <input type="text" class="form-control" id="length-display" value="16" readonly>
                     </div>
                 </div>
             </div>
-            <!-- Password Generator Button -->
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center mb-2">
                 <button class="btn btn-primary" type="button" id="generate">
                     Generate Password
                     <i class="fa fa-key"></i>
@@ -86,7 +95,6 @@
         </div>
     </div>
 
-    <!-- Create a floating contact button at the bottom right of the page-->
     <div class="contact-button" id="contact-button">
         <a href="https://alexsandersontech.com" target="_blank" title="Contact Me!">
             <i class="fa fa-envelope"></i>
